@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	
+	<context id="mysql" targetRuntime="MyBatis3" defaultModelType="conditional">
+		<property name="mergeable" value="false"></property>
+		<plugin type="com.springboot.cs.common.autocode.plugin.MySqlPlugin" />
+		 
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://47.244.51.250:11306/imeetlink?nullCatalogMeansCurrent=true" userId="root" password="mysql@123456">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.springboot.cs.po.sys" targetProject="/Users/user/local/myGit/cs-springboot/src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="mybatis.mapper.autocode.sys" targetProject="/Users/user/local/myGit/cs-springboot/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.springboot.cs.mapper.autocode.sys" targetProject="/Users/user/local/myGit/cs-springboot/src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+ 		<table schema="" tableName="imeetlink_activity">
+			<property name="useActualColumnNames" value="false" />
+			<property name="lastInsertId" value="false" />
+		</table> 
+		
+	</context>
+</generatorConfiguration>

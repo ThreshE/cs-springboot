@@ -1,0 +1,72 @@
+server:
+  port: 8889
+
+variable:
+
+spring:
+  datasource:
+    username: root
+    password: mysql@123456
+    url: jdbc:mysql://47.244.51.250:11306/imeetlink?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC&useJDBCCompliantTimezoneShift=true
+    driverClassName: com.mysql.jdbc.Driver
+
+    main:
+      allow-bean-definition-overriding: true
+    #pool
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    max-active: 100
+    min-idle: 5
+    max-wait: 60000
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    validation-query: SELECT 1 FROM DUAL
+    validation-query-timeout: 60000
+    test-on-borrow: false
+    test-on-return: false
+    test-while-idle: true
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 100000
+    filters: stat,wall,log4j
+
+  redis:
+    host: 192.168.31.42
+    port: 10379
+    timeout: 1000
+    password:
+    block-when-exhausted: true
+  pool:
+    max-active: 8
+    min-idle: 0
+    max-idle: 8
+    max-wait: -1
+
+  freemarker:
+    preferFileSystemAccess: false
+    
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*/*/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.springboot.cs.po.*.*
+
+#showSql
+#logging:
+#  level:
+#    com:
+#      springboot:
+#        cs:
+#          mapper : debug
+
+docker:
+  image:
+    prefix: springboot-cs
+
+
+logging:
+  config: classpath:logback/logback-spring.xml
+  config: classpath:logback/logback-spring.xml
+  error: /Users/user/local/myGit/cs-springboot/log/errorsit
+  info: /Users/user/local/myGit/cs-springboot/log/infosit
+  debug: /Users/user/local/myGit/cs-springboot/log/debugsit
+  maxHistory: 30
+  maxFileSize: 1MB #100MB
